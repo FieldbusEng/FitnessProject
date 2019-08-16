@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.29209.62
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibraryFitness", "ClassLibraryFitness\ClassLibraryFitness.csproj", "{A1C1EA85-63C3-4C88-8B7C-C4689FFDF7B0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FitnessConsole.CMD", "FitnessConsole.CMD\FitnessConsole.CMD.csproj", "{22165588-0A1E-4747-8F06-FFCCF29388D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FitnessConsole.CMD", "FitnessConsole.CMD\FitnessConsole.CMD.csproj", "{22165588-0A1E-4747-8F06-FFCCF29388D5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibraryFitnessTests", "ClassLibraryFitnessTests\ClassLibraryFitnessTests.csproj", "{209D771B-D9DF-4D8F-9AA5-576DB9AEA796}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{22165588-0A1E-4747-8F06-FFCCF29388D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{22165588-0A1E-4747-8F06-FFCCF29388D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{22165588-0A1E-4747-8F06-FFCCF29388D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{209D771B-D9DF-4D8F-9AA5-576DB9AEA796}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{209D771B-D9DF-4D8F-9AA5-576DB9AEA796}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{209D771B-D9DF-4D8F-9AA5-576DB9AEA796}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{209D771B-D9DF-4D8F-9AA5-576DB9AEA796}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

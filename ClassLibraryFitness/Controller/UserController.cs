@@ -46,7 +46,6 @@ namespace ClassLibraryFitness.Controller
                 IsNewUser = true;
              
             }
-        
 
         }
         /// <summary>
