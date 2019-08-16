@@ -3,6 +3,7 @@ using System;
 
 namespace FitnessConsole.CMD
 {
+    // Please Comment as much as Possible!!!
     class Program
     {
         static void Main(string[] args)
