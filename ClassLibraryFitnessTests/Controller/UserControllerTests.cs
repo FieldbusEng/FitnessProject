@@ -11,22 +11,31 @@ namespace ClassLibraryFitness.Controller.Tests
     [TestClass()]
     public class UserControllerTests
     {
-        [TestMethod()]
-        public void UserControllerTest()
-        {
-            Assert.Fail();
-        }
-
+      
         [TestMethod()]
         public void SetNewUserDataTest()
         {
-            Assert.Fail();
-        }
+            // Arrange
+            var nname = Guid.NewGuid().ToString();
+            var gender = Guid.NewGuid().ToString();
+            DateTime birthDate = new DateTime(1999, 11, 15);
+            var weight = 100;
+            var height = 1000;
 
-        [TestMethod()]
-        public void UserControllerTest1()
-        {
-            Assert.Fail();
+            // Act
+            var controller = new UserController(nname);
+            controller.SetNewUserData(gender, birthDate, weight, height);
+
+            var controller2 = new UserController(nname);
+            // Assert
+
+            Assert.AreEqual(nname, controller2.CurrentUser.Name);
+            Assert.AreEqual(gender, controller2.CurrentUser.Gender.Name);
+            Assert.AreEqual(birthDate, controller2.CurrentUser.BirthDate);
+            Assert.AreEqual(weight, controller2.CurrentUser.Weight);
+            Assert.AreEqual(height, controller2.CurrentUser.Height);
+
+
         }
 
         [TestMethod()]
