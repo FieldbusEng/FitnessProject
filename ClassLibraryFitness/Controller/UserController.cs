@@ -12,7 +12,7 @@ namespace ClassLibraryFitness.Controller
     /// <summary>
     /// Controller for User
     /// </summary>
-    public class UserController
+    public class UserController : ControllerBase
     {
         /// <summary>
         /// User of the application
@@ -54,21 +54,9 @@ namespace ClassLibraryFitness.Controller
         /// <returns></returns>
         private List<User> GetUsersData()
         {
-            var formatter = new BinaryFormatter();
-            using (var fs = new FileStream("users.dat", FileMode.OpenOrCreate))
-            {
-
-                if (fs.Length >0 && formatter.Deserialize(fs) is List<User> users)
-                {
-                    return users;
-                }
-                else
-                {
-                    return new List<User>();
-                }
-                
-            }
-          
+            // call this method from bsae class "ControllerBase.cs"
+            return Load<List<User>>("users.dat")??new List<User>();
+                     
 
         }
         //method  to create new user
@@ -101,18 +89,9 @@ namespace ClassLibraryFitness.Controller
 
         }
 
-        /// <summary>
-        /// Save user data
-        /// </summary>
         public void Save()
         {
-            var formatter = new BinaryFormatter();
-
-            using (var fs = new FileStream("users.dat", FileMode.OpenOrCreate))
-            {
-                formatter.Serialize(fs, Users);
-            }
-
+            Save("user.dat", Users);
         }
         
 
