@@ -7,18 +7,24 @@ namespace ClassLibraryFitness.Controller
     public abstract class ControllerBase
     {
         /// <summary>
-        /// Save user data
+        /// Save user data Serialisation in Binary
         /// </summary>
-        protected void Save(string fileName, object itemtype)
+        protected void Save(string fileName, object item)
         {
             var formatter = new BinaryFormatter();
 
             using (var fs = new FileStream(fileName, FileMode.OpenOrCreate))
             {
-                formatter.Serialize(fs, itemtype);
+                formatter.Serialize(fs, item);
             }
 
         }
+        /// <summary>
+        /// Deserialisation in Binary
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="fileName"></param>
+        /// <returns></returns>
         protected T Load<T>(string fileName)
         {
             var formatter = new BinaryFormatter();

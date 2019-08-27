@@ -14,6 +14,7 @@ namespace ClassLibraryFitness.Controller
     /// </summary>
     public class UserController : ControllerBase
     {
+        private const string USERS_FILE_NAME = "users.dat";
         /// <summary>
         /// User of the application
         /// </summary>
@@ -54,8 +55,8 @@ namespace ClassLibraryFitness.Controller
         /// <returns></returns>
         private List<User> GetUsersData()
         {
-            // call this method from bsae class "ControllerBase.cs"
-            return Load<List<User>>("users.dat")??new List<User>();
+            // call this method from base class "ControllerBase.cs"
+            return Load<List<User>>(USERS_FILE_NAME)??new List<User>();
                      
 
         }
@@ -78,7 +79,7 @@ namespace ClassLibraryFitness.Controller
         public UserController()
         {
             var formatter = new BinaryFormatter();
-            using (var fs = new FileStream("users.dat", FileMode.OpenOrCreate))
+            using (var fs = new FileStream(USERS_FILE_NAME, FileMode.OpenOrCreate))
             {
                 if (formatter.Deserialize(fs) is List<User> users)
                 {
@@ -91,7 +92,7 @@ namespace ClassLibraryFitness.Controller
 
         public void Save()
         {
-            Save("user.dat", Users);
+            base.Save(USERS_FILE_NAME, Users);
         }
         
 

@@ -1,4 +1,5 @@
 ﻿using ClassLibraryFitness.Controller;
+using ClassLibraryFitness.Model;
 using System;
 
 namespace FitnessConsole.CMD
@@ -26,6 +27,7 @@ namespace FitnessConsole.CMD
             //var height =double.Parse(Console.ReadLine());
 
             var userController = new UserController(name);
+            var eatingController = new EatingController(userController.CurrentUser);
             // check if this user is new(true)
             if (userController.IsNewUser)
             {
@@ -41,7 +43,38 @@ namespace FitnessConsole.CMD
              
             Console.WriteLine(userController.CurrentUser);
 
+            Console.WriteLine("What you want to do?");
+            Console.WriteLine("E - enter eating event");
+            Console.WriteLine();
+            var key = Console.ReadKey();
+            if (key.Key == ConsoleKey.E)
+            {
+                var foods = EnterEating();
+                eatingController.Add(foods.ffood, foods.wweight);
+
+                foreach (var item in eatingController.Eating.Foods)
+                {
+                    Console.WriteLine($"\t{item.Key} - {item.Value}");
+                }
+                
+            }
+
             Console.ReadLine();
+        }
+
+        private static (Food ffood, double wweight) EnterEating()
+        {
+            Console.WriteLine("Enter product name: ");
+            var food = Console.ReadLine();
+
+            var calories = ParseDouble("Calories");
+            var proteins = ParseDouble("Proteins");
+            var fets = ParseDouble("Fets");
+            var carbonates = ParseDouble("Carbonates");
+
+            var weight = ParseDouble("weight of the portion");
+            var product = new Food(food, calories, proteins, fets, carbonates);
+            return (ffood: product, wweight: weight);
         }
 
         private static DateTime ParseDateTime()
@@ -76,7 +109,7 @@ namespace FitnessConsole.CMD
                 }
                 else
                 {
-                    Console.WriteLine($"Not correct format of {_name}");
+                    Console.WriteLine($"Not correct format of the field {_name}");
                 }
             }
         }

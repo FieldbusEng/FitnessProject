@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 namespace ClassLibraryFitness.Model
 {
     /// <summary>
-    /// getting food
+    /// getting food прием пищи
     /// </summary>
+    
+    [Serializable]
     public class Eating
     {
         public DateTime Moment { get; }
@@ -19,6 +21,7 @@ namespace ClassLibraryFitness.Model
         public Eating(User user)
         {
             User = user ?? throw new ArgumentNullException("User can not be empty", nameof(user));
+            // UtcNow means universal time (Different lang)
             Moment = DateTime.UtcNow;
             Foods = new Dictionary<Food, double>();
 
