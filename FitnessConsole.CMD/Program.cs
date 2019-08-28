@@ -1,6 +1,10 @@
 ﻿using ClassLibraryFitness.Controller;
 using ClassLibraryFitness.Model;
 using System;
+using FitnessConsole.CMD.Languages;
+using System.Globalization;
+using System.Resources;
+using System.Reflection;
 
 namespace FitnessConsole.CMD
 {
@@ -10,8 +14,13 @@ namespace FitnessConsole.CMD
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello from App ConsoleFitness");
-            Console.WriteLine("Enter User Name");
+            //Culture mainly for languages
+            var culture = new CultureInfo("cz");
+            Assembly a = Assembly.Load("FitnessConsole.CMD");
+            var resourceManager = new ResourceManager("FitnessConsole.CMD.Languages.Messages", a);
+
+            Console.WriteLine(resourceManager.GetString("Hello", culture));
+            Console.WriteLine(resourceManager.GetString("EnterName", culture));
             var name = Console.ReadLine();
 
             //Console.WriteLine("Enter Gender");
@@ -31,7 +40,7 @@ namespace FitnessConsole.CMD
             // check if this user is new(true)
             if (userController.IsNewUser)
             {
-                Console.WriteLine("You are New User, Please type Gender: ");
+                Console.WriteLine(Messages_RU.NewUser);
                 var gender = Console.ReadLine();
                 var birthDate = ParseDateTime();
                 var weight = ParseDouble("Weight");
